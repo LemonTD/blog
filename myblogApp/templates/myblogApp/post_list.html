@@ -1,0 +1,101 @@
+{% extends 'myblogApp/base.html' %}
+
+{% block content %}
+
+
+  <div class="page-header"> 
+      <h1><a href="/">Welcome to GistBuddies</a></h1>
+      
+     <div>
+        {% load static %}
+        <img src="{% static 'images/afric.jpg' %}" class="d-block w-100" alt="My images" style="height: 500px;">
+        
+     </div>
+     
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">CAN denies knowledge of solidarity visit, says COZA pastors are on their own</h5>
+              <img src="{% static 'images/coza.jpg' %}" class="card-img-top" alt="...">
+              <p class="card-text">In a statement issued on Monday, July 15, 2019 the National Director of Legal and Public Affairs, CAN, Evangelist Barrister Kwamkur Samuel Vondip, said that the purported solidarity visit and video had nothing to do with the group.
+                  He also stated that the pastors seen in the viral video visited the church based on their personal interest, as he explained that the Pentecostal Fellowship of Nigeria, PFN, has already constituted a panel to investigate the rape allegation against the Senior Pastor of COZA, Pastor Biodun Fatoyinbo..</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tragedy as couple falls from 9-storey building during sex</h5>
+              <img src="{% static 'images/sex.jpg' %}" class="card-img-top" alt="...">
+              <p class="card-text">A couple making love on the windowsill of a ninth-floor apartment fell leaving the woman dead, while her partner survived.
+                  According to Dailymail, the incident happened on Friday, July 5, 2019, at a block of flats in St Petersburg, Russia.         
+                  Witnesses say the survivor, who was partially dressed, returned to the party that was reportedly holding in the said apartment.
+                  
+                  Witnesses said they saw a television thrown from the window of the flat, after which the woman and her 29-year-old lover plunged to the ground below.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Old Trafford glory days over</h5>
+            <img src="{% static 'images/pitch.jpg' %}" class="card-img-top" alt="...">
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Camp Fire</h5>
+            <img src="{% static 'images/friends.jpg' %}" class="card-img-top" alt="...">
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, magni in fugit quam culpa eveniet voluptatem qui mollitia unde corrupti iste esse tempore optio, sapiente debitis praesentium dolorem exercitationem dolores!</p>
+            
+            <p class="card-text"><small class="text-muted">updated 5 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lustful Thoughts</h5>
+            <img src="{% static 'images/lem.jpg' %}" class="card-img-top" alt="...">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+
+{% for post in posts %}
+<div class="post">
+    <!-- <div class="col-sm-6"> -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <!-- <img src="{% static 'images/coza.jpg' %}" class="card-img-top" alt="..."> -->
+          <p class="card-text">{{post.text | linebreaksbr }}</p>
+          <p style="color: brown;">published: {{post.published_date}}</p>
+          <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+      <!-- </div> -->
+    </div>
+    
+  </div>
+
+<!-- <div class="post">
+  <h2><a href="">{{post.title}}</a></h2>
+  <p> {{post.text | linebreaksbr }}</p>
+  <p style="color: brown;">published: {{post.published_date}}</p>
+</div> -->
+{% endfor %}
+{% endblock %}
+  
