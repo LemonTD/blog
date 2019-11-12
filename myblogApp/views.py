@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post
+from .forms import PostForm
 
 # Create your views here.
 def post_list(request):
@@ -9,7 +10,28 @@ def post_list(request):
 
 
 def index(request):
-    return render(request, 'myblogApp/index.html', {'posts':posts})
+    return render(request, 'myblogApp/index.html', {})
+
+def login(request):
+    posts = get_object_or_404(Post)
+    return render(request, 'myblogApp/login.html', {'posts':posts})
 
 
+def post_detail(request, pk):
+    posts = get_object_or_404(Post, pk=pk)
+    return render(request, 'myblogApp/post_detail.html', {'posts':posts})
+
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    
+    else:
+        form = PostForm()
+        return render(request, 'myblogApp/post_new.html', {'form':form})
 

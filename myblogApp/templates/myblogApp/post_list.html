@@ -5,13 +5,13 @@
 
   <div class="page-header"> 
       <h1><a href="/">Welcome to GistBuddies</a></h1>
-      
+      <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>+</a>
      <div>
         {% load static %}
         <img src="{% static 'images/afric.jpg' %}" class="d-block w-100" alt="My images" style="height: 500px;">
         
      </div>
-     
+
     </div>
     <br>
     <br>
@@ -74,16 +74,18 @@
           </div>
         </div>
       </div>
+      <br>
+      <br>
 
 {% for post in posts %}
 <div class="post">
     <!-- <div class="col-sm-6"> -->
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{post.title}}</h5>
-          <!-- <img src="{% static 'images/coza.jpg' %}" class="card-img-top" alt="..."> -->
-          <p class="card-text">{{post.text | linebreaksbr }}</p>
-          <p style="color: brown;">published: {{post.published_date}}</p>
+          <h2><a href="{% url 'post_detail' pk=post.pk %}"> {{post.title}}</h5>
+          <!-- <img src="{% static 'images/stret.jpg' %}" class="card-img-top" alt="..."> -->
+          <p class="card-text">{{post.text | linebreaksbr | truncatewords:10 }}</p>
+          <p style="color: brown;">published: {{ post.published_date}}</p>
           <a href="#" class="btn btn-primary">Read More</a>
         </div>
       <!-- </div> -->
